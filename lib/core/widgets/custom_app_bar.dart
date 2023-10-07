@@ -9,7 +9,8 @@ class CustomAppBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
         children: [
-          Icon(Icons.arrow_back_ios,color: Colors.black),Image.asset("assets/images/logo.png",height: 18.h,width: 90.w,)],
+          Icon(Icons.arrow_back_ios,color: Colors.black,size: 20),
+          Image.asset("assets/images/logo.png",height: 18.h,width: 90.w,)],
          );
   }
 }

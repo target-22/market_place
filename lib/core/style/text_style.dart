@@ -8,13 +8,23 @@ class AppTexts {
 
 
   static final roboto23 = TextStyle(
-      color: AppColor.red,
+      color: Colors.black,
       fontSize: 23,
-      fontWeight: FontWeight.bold,
+      //fontWeight: FontWeight.bold,
       fontFamily: "Roboto");
   static final roboto20 = TextStyle(
       color: Colors.black,
       fontSize: 20,
+      fontWeight: FontWeight.bold,
+      fontFamily: "Roboto");
+  static final roboto25 = TextStyle(
+      color: Colors.white,
+      fontSize: 25,
+      fontWeight: FontWeight.bold,
+      fontFamily: "Roboto");
+  static final roboto18 = TextStyle(
+      color: Color(0xffACAFAFB2),
+      fontSize: 18,
       fontWeight: FontWeight.bold,
       fontFamily: "Roboto");
 

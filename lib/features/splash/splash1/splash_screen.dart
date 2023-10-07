@@ -33,7 +33,7 @@ class _SplashscreenState extends BaseView<Splashscreen,SplashScreenViewModel>imp
             SizedBox(height: 267.h,),
             Image.asset("assets/images/logo.png",height: 69.h,width: 344.w),
             SizedBox(height: 38.h,),
-            CustomeButton(AppColor.red," Start", onButtonClick)
+            CustomeButton(AppColor.red,"Start",onButtonClick)
           ],
         ),
       ),

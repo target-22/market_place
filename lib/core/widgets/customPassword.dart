@@ -20,6 +20,18 @@ class _CustomPasswordFormState extends State<CustomPasswordForm> {
   Widget build(BuildContext context) {
     return TextFormField(
       controller: widget.controller,
+      validator: (password) {
+        if(password==null){
+          return"Please Enter yourPasswor";
+        }
+        if(password.length<8){return "Password length shouldn't be less than 8 characters";}
+        bool passwordValid = RegExp(
+            r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?\d)(?=.*?[!@#$&*~]).{8,}$')
+            .hasMatch(password);
+        if (!passwordValid){
+          return "Please Enter Valid password";
+        }
+      },
       obscureText: obscureText,
       decoration: InputDecoration(hintText: widget.hintText,
           hintStyle: AppTexts.roboto18 ,

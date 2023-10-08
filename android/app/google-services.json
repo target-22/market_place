@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "697560368003",
+    "project_id": "market-place-e2dba",
+    "storage_bucket": "market-place-e2dba.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:697560368003:android:7c81f9b51367cc9ba1acb6",
+        "android_client_info": {
+          "package_name": "com.example.market_place"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAqgSQN6FPFOwh5KPlOOqibGShqZ5WAoNo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

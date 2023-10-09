@@ -1,41 +1,36 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:market_place/base.dart';
-import 'package:market_place/core/style/app_color.dart';
-import 'package:market_place/core/widgets/custom_app_bar.dart';
-import 'package:market_place/core/widgets/custome_button.dart';
-import 'package:market_place/features/auth/log_in/log_in_navigator.dart';
-import 'package:market_place/features/auth/log_in/log_in_view_model.dart';
-import 'package:market_place/features/auth/sing_in/register.dart';
 import 'package:provider/provider.dart';
 
-import '../../../core/widgets/customPassword.dart';
+import '../../../core/style/app_color.dart';
+import '../../../core/widgets/custom_app_bar.dart';
 import '../../../core/widgets/custom_email_form_field.dart';
-import '../forget_password/forget_password.dart';
+import '../../../core/widgets/custome_button.dart';
+import 'forget_password_navegator.dart';
+import 'forget_password_view_model.dart';
 
-class LogIN extends StatefulWidget {
- // const LogIN({super.key});
-
-  static const String routName = "LogIn";
+class ForgetPassword extends StatefulWidget {
+  const ForgetPassword({super.key});
+  static const String routName="ForgetPassword";
 
   @override
-  State<LogIN> createState() => _LogINState();
+  State<ForgetPassword> createState() => _ForgetPasswordState();
 }
 
-class _LogINState extends BaseView<LogIN, LogInViewModel>
-    implements LogInNavigator {
+class _ForgetPasswordState extends BaseView<ForgetPassword,ForgetPasswordViewModel> implements ForgetPasswordNavegator{
   String? hintText;
   TextEditingController emailcontroller=TextEditingController();
   TextEditingController passwordcontroller=TextEditingController();
   var key = GlobalKey<FormState>();
-@override
   void initState() {
     super.initState();
     viewModel.navigator=this;
   }
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
+   return ChangeNotifierProvider(
       create: (context) => viewModel,
       child: Scaffold(
         appBar: AppBar(
@@ -47,12 +42,12 @@ class _LogINState extends BaseView<LogIN, LogInViewModel>
             child: Form(
               key: key,
               child:
-                  Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+              Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
                 Center(
                   child: Text("Login",
                       style: Theme.of(context).textTheme.bodyLarge!.copyWith(
-                            color: AppColor.red,
-                          )),
+                        color: AppColor.red,
+                      )),
                 ),
                 SizedBox(
                   height: 50.h,
@@ -64,7 +59,7 @@ class _LogINState extends BaseView<LogIN, LogInViewModel>
                 SizedBox(
                   height: 10.h,
                 ),
-                    CustomEmailFormFaild(
+                CustomEmailFormFaild(
                   hintText: "Enter Your Email",
                   controller: emailcontroller,
                 ),
@@ -78,24 +73,18 @@ class _LogINState extends BaseView<LogIN, LogInViewModel>
                 SizedBox(
                   height: 10.h,
                 ),
-                CustomPasswordForm(
-                  controller: passwordcontroller,
-                  hintText: "Enter Your Password",
-                ),
+
                 SizedBox(
                   height: 10.h,
                 ),
                 Row(children: [
                   Spacer(),
-                  InkWell(
-                    onTap:goToForgetPasswordScreen() ,
-                    child: Text(
-                      "Forget Password ?",
-                      style: Theme.of(context)
-                          .textTheme
-                          .bodyMedium!
-                          .copyWith(fontSize: 17.sp, color: Color(0xff969B9B)),
-                    ),
+                  Text(
+                    "Forget Password ?",
+                    style: Theme.of(context)
+                        .textTheme
+                        .bodyMedium!
+                        .copyWith(fontSize: 17.sp, color: Color(0xff969B9B)),
                   ),
                 ]),
                 SizedBox(
@@ -146,48 +135,24 @@ class _LogINState extends BaseView<LogIN, LogInViewModel>
                 SizedBox(
                   height: 90.h,
                 ),
-                InkWell(
-                  onTap:goToRegesterScreen ,
-                  child: RichText(
-                    text: TextSpan(
-                        style: DefaultTextStyle.of(context).style,
-                      children: <TextSpan>[
-                        TextSpan(text: "Don not have an account?",
-                        style: Theme.of(context).textTheme.bodySmall),
-                        TextSpan(text: "Register",
-                            style: Theme.of(context).textTheme.bodyMedium!.copyWith(color: AppColor.red))
-                      ]
-
-
-                  )
-                      ),
-                )]),
+                ]
             ),
           ),
         ),
       ),
-    );
+    ));
   }
 
   @override
-  LogInViewModel initViewModel() {
-    return LogInViewModel();
+  ForgetPasswordViewModel initViewModel() {
+
+    return ForgetPasswordViewModel();
   }
 
   @override
-  goToRegesterScreen() {
-  Navigator.pushReplacementNamed(context, Register.routName);
+  goToHome() {
+
   }
 
-   onPressed() {
-    if(key.currentState?.validate()==true) {
-     print("hello");
-      viewModel.onLogInPressed;
-    }
-  }
-
-  @override
-  goToForgetPasswordScreen() {
-    Navigator.pushReplacementNamed(context, ForgetPassword.routName);
-  }
+  onPressed() {}
 }

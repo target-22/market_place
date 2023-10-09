@@ -7,6 +7,7 @@ import 'package:market_place/core/widgets/custome_button.dart';
 import 'package:market_place/features/splash/splash1/splash_navigator1.dart';
 import 'package:market_place/features/splash/splash1/splash_view_model.dart';
 import 'package:market_place/features/splash/splash2/second_screen.dart';
+import 'package:provider/provider.dart';
 
 class Splashscreen extends StatefulWidget {
   const Splashscreen({super.key});
@@ -23,18 +24,21 @@ class _SplashscreenState extends BaseView<Splashscreen,SplashScreenViewModel>imp
   }
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Padding(
-        padding: const EdgeInsets.only(left: 30),
-        child: Column(
-          mainAxisSize: MainAxisSize.max,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            SizedBox(height: 267.h,),
-            Image.asset("assets/images/logo.png",height: 69.h,width: 344.w),
-            SizedBox(height: 38.h,),
-            CustomeButton(AppColor.red,"Start",onButtonClick)
-          ],
+    return ChangeNotifierProvider(
+      create: (context) => viewModel,
+      child: Scaffold(
+        body: Padding(
+          padding: const EdgeInsets.only(left: 30),
+          child: Column(
+            mainAxisSize: MainAxisSize.max,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              SizedBox(height: 267.h,),
+              Image.asset("assets/images/logo.png",height: 69.h,width: 344.w),
+              SizedBox(height: 38.h,),
+              CustomeButton(AppColor.red,"Start",onButtonClick)
+            ],
+          ),
         ),
       ),
     );

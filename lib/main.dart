@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:market_place/core/style/my_theme.dart';
 import 'package:market_place/features/auth/sing_in/register.dart';
+import 'features/auth/forget_password/forget_password.dart';
 import 'features/auth/log_in/log_in.dart';
 import 'features/splash/splash1/splash_screen.dart';
 import 'features/splash/splash2/second_screen.dart';
@@ -28,6 +29,7 @@ class MarketPlace extends StatelessWidget {
               SecondScreen.routName :(context) => SecondScreen(),
               LogIN.routName:(context) =>  LogIN(),
               Register.routName:(context) =>  Register(),
+              ForgetPassword.routName :(context) => ForgetPassword(),
             },
           );
         });

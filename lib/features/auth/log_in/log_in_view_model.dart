@@ -3,6 +3,7 @@ import 'log_in_navigator.dart';
 
 class LogInViewModel extends BaseViewModel<LogInNavigator>{
    onLogInPressed(){
+      print("hello");
       navigator!.showLoading();
 }
 }

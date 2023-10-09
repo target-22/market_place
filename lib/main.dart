@@ -23,7 +23,7 @@ class MarketPlace extends StatelessWidget {
         builder: (_, child) {
           return MaterialApp(
             debugShowCheckedModeBanner: false,theme: MyThemeData.lightTheme,
-            initialRoute: Splashscreen.routName,
+            initialRoute: ForgetPassword.routName,
             routes: {
               Splashscreen.routName: (context) => Splashscreen(),
               SecondScreen.routName :(context) => SecondScreen(),

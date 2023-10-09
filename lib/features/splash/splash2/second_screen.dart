@@ -7,6 +7,7 @@ import 'package:market_place/core/style/text_style.dart';
 import 'package:market_place/core/widgets/custome_button.dart';
 import 'package:market_place/features/auth/log_in/log_in.dart';
 import 'package:market_place/features/auth/sing_in/register.dart';
+import 'package:market_place/features/splash/splash1/splash_navigator1.dart';
 import 'package:market_place/features/splash/splash2/scond_screen_navigator.dart';
 import 'package:market_place/features/splash/splash2/second_screen_view_model.dart';
 import 'package:provider/provider.dart';
@@ -27,7 +28,7 @@ class _SecondScreenState extends BaseView<SecondScreen, SecondScreenViewModel>
   @override
   void initState() {
     super.initState();
-    viewModel.navigator=this;
+    viewModel.navigator= this ;
   }
   @override
   Widget build(BuildContext context) {

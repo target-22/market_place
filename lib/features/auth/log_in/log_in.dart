@@ -6,12 +6,12 @@ import 'package:market_place/core/widgets/custom_app_bar.dart';
 import 'package:market_place/core/widgets/custome_button.dart';
 import 'package:market_place/features/auth/log_in/log_in_navigator.dart';
 import 'package:market_place/features/auth/log_in/log_in_view_model.dart';
-import 'package:market_place/features/auth/sing_in/register.dart';
 import 'package:provider/provider.dart';
 
 import '../../../core/widgets/customPassword.dart';
 import '../../../core/widgets/custom_email_form_field.dart';
 import '../forget_password/forget_password.dart';
+import '../register/register.dart';
 
 class LogIN extends StatefulWidget {
  // const LogIN({super.key});
@@ -88,7 +88,7 @@ class _LogINState extends BaseView<LogIN, LogInViewModel>
                 Row(children: [
                   Spacer(),
                   InkWell(
-                    onTap:goToForgetPasswordScreen() ,
+                    onTap:goToForgetPasswordScreen ,
                     child: Text(
                       "Forget Password ?",
                       style: Theme.of(context)
@@ -101,7 +101,7 @@ class _LogINState extends BaseView<LogIN, LogInViewModel>
                 SizedBox(
                   height: 10.h,
                 ),
-                CustomeButton(AppColor.red, "Login", onPressed() ),
+                CustomeButton(AppColor.red, "Login", onPressed ),
                 SizedBox(
                   height: 10.h,
                 ),
@@ -146,22 +146,22 @@ class _LogINState extends BaseView<LogIN, LogInViewModel>
                 SizedBox(
                   height: 90.h,
                 ),
-                InkWell(
-                  onTap:goToRegesterScreen ,
-                  child: RichText(
-                    text: TextSpan(
-                        style: DefaultTextStyle.of(context).style,
-                      children: <TextSpan>[
-                        TextSpan(text: "Don not have an account?",
-                        style: Theme.of(context).textTheme.bodySmall),
-                        TextSpan(text: "Register",
-                            style: Theme.of(context).textTheme.bodyMedium!.copyWith(color: AppColor.red))
-                      ]
+                    InkWell(
+                      onTap:goToRegesterScreen ,
+                      child: RichText(
+                          text: TextSpan(
+                              style: DefaultTextStyle.of(context).style,
+                              children: <TextSpan>[
+                                TextSpan(text: "Don not have an account?",
+                                    style: Theme.of(context).textTheme.bodySmall),
+                                TextSpan(text: "Register",
+                                    style: Theme.of(context).textTheme.bodyMedium!.copyWith(color: AppColor.red))
+                              ]
 
 
-                  )
+                          )
                       ),
-                )]),
+                    )]),
             ),
           ),
         ),

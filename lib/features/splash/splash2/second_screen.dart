@@ -6,13 +6,14 @@ import 'package:market_place/core/style/app_color.dart';
 import 'package:market_place/core/style/text_style.dart';
 import 'package:market_place/core/widgets/custome_button.dart';
 import 'package:market_place/features/auth/log_in/log_in.dart';
-import 'package:market_place/features/auth/sing_in/register.dart';
 import 'package:market_place/features/splash/splash1/splash_navigator1.dart';
 import 'package:market_place/features/splash/splash2/scond_screen_navigator.dart';
 import 'package:market_place/features/splash/splash2/second_screen_view_model.dart';
 import 'package:provider/provider.dart';
 
 import '../../../core/widgets/custom_app_bar.dart';
+import '../../../core/widgets/register _button.dart';
+import '../../auth/register/register.dart';
 
 class SecondScreen extends StatefulWidget {
   const SecondScreen({super.key});
@@ -41,43 +42,35 @@ class _SecondScreenState extends BaseView<SecondScreen, SecondScreenViewModel>
             elevation: 0),
         body: Container(
           width: 410.w,
-          child: Column(
-              //crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                Image.asset(
-                  "assets/images/welcome.png",
-                  height: 242.h,
-                  width: 326.w,
-                ),
-                SizedBox(
-                  height: 27.h,
-                ),
-                Text("Market Place",
-                    style: AppTexts.roboto23, textAlign: TextAlign.left),
-                SizedBox(
-                  height: 8.h,
-                ),
-                Text("Everything you need is in one place",
-                    style: AppTexts.roboto20),
-                SizedBox(
-                  height: 57.h,
-                ),
-                CustomeButton(AppColor.red, "Login",onLogInButtonClick ),
-                SizedBox(
-                  height: 27.h,
-                ),
-                Container(
-                    decoration: BoxDecoration(
-                        border: Border.all(color: AppColor.red),
-                        borderRadius: BorderRadius.all(Radius.circular(26))),
-                    child: MaterialButton(
-                      onPressed: onRegisterButtonClick,
-                      child: Text("Regester"),
-                      color: Colors.white,
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(26)),
-                      height: 50.h,minWidth: 339.w,)),
-              ]),
+          child: SingleChildScrollView(
+            child: Column(
+                //crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  Image.asset(
+                    "assets/images/welcome.png",
+                    height: 242.h,
+                    width: 326.w,
+                  ),
+                  SizedBox(
+                    height: 27.h,
+                  ),
+                  Text("Market Place",
+                      style: AppTexts.roboto23, textAlign: TextAlign.left),
+                  SizedBox(
+                    height: 8.h,
+                  ),
+                  Text("Everything you need is in one place",
+                      style: AppTexts.roboto20),
+                  SizedBox(
+                    height: 57.h,
+                  ),
+                  CustomeButton(AppColor.red, "Login",onLogInButtonClick ),
+                  SizedBox(
+                    height: 27.h,
+                  ),
+                  RegisterButton(color:Colors.white ,text:"Register" ,onPressed: onRegisterButtonClick),
+                ]),
+          ),
         ),
       ),
     );

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:market_place/core/style/text_style.dart';
 
 class CustomTextForm extends StatelessWidget {
-   CustomTextForm({this.controller,this.hintText,});
+   CustomTextForm( {this.controller,this.hintText,});
   TextEditingController? controller;
    String? hintText;
   // String labal;

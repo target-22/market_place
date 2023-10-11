@@ -12,12 +12,12 @@ class CustomEmailFormFaild extends StatelessWidget {
       controller: controller,
       validator:(email) {
         if(email==null){return "Please enter your email adress";}
-        bool emailValid = RegExp(
-            r"^[a-zA-Z\d]([._](?![._])|[a-zA-Z\d]){1,18}[a-zA-Z\d]$")
-            .hasMatch(email);
-        if(!emailValid){
-          return "Please enter valid email";
-        }
+        // bool emailValid = RegExp(
+        //     r"^[a-zA-Z\d]([._](?![._])|[a-zA-Z\d]){1,18}[a-zA-Z\d]$")
+        //     .hasMatch(email);
+        // if(!emailValid){
+        //   return "Please enter valid email";
+        //}
       },
         keyboardType:TextInputType.emailAddress,
       decoration: InputDecoration(hintText: hintText,

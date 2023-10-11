@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:market_place/features/auth/sing_in/register_navigator.dart';
-import 'package:market_place/features/auth/sing_in/register_view_model.dart';
+import 'package:market_place/features/auth/register/register_navigator.dart';
+import 'package:market_place/features/auth/register/register_view_model.dart';
 import 'package:provider/provider.dart';
-
 import '../../../base.dart';
 import '../../../core/style/app_color.dart';
 import '../../../core/widgets/customPassword.dart';
 import '../../../core/widgets/custom_app_bar.dart';
 import '../../../core/widgets/custom_email_form_field.dart';
+import '../../../core/widgets/custom_text_form.dart';
 import '../../../core/widgets/custome_button.dart';
+import '../../home/home.dart';
 
 class Register extends StatefulWidget {
   const Register({super.key});
@@ -22,6 +23,7 @@ class Register extends StatefulWidget {
 
 class _RegisterState extends BaseView<Register, RegisterViewModel> implements RegisterNavigator{
   String? hintText;
+  TextEditingController controller=TextEditingController();
   TextEditingController emailcontroller=TextEditingController();
   TextEditingController passwordcontroller=TextEditingController();
   var key = GlobalKey<FormState>();
@@ -46,14 +48,28 @@ class _RegisterState extends BaseView<Register, RegisterViewModel> implements Re
               key: key,
               child:
               Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                SizedBox(
+                  height: 30.h,
+                ),
                 Center(
-                  child: Text("Login",
+                  child: Text("Register",
                       style: Theme.of(context).textTheme.bodyLarge!.copyWith(
                         color: AppColor.red,
                       )),
                 ),
                 SizedBox(
-                  height: 50.h,
+                  height: 30.h,
+                ),
+                Text(
+                  "User Name",
+                  style: Theme.of(context).textTheme.bodyMedium,
+                ),
+                SizedBox(
+                  height: 10.h,
+                ),
+                CustomTextForm(hintText: "Enter your name",controller: controller),
+                SizedBox(
+                  height: 35.h,
                 ),
                 Text(
                   "Email",
@@ -81,66 +97,12 @@ class _RegisterState extends BaseView<Register, RegisterViewModel> implements Re
                   hintText: "Enter Your Password",
                 ),
                 SizedBox(
-                  height: 10.h,
-                ),
-                Row(children: [
-                  Spacer(),
-                  Text(
-                    "Forget Password ?",
-                    style: Theme.of(context)
-                        .textTheme
-                        .bodyMedium!
-                        .copyWith(fontSize: 17.sp, color: Color(0xff969B9B)),
-                  ),
-                ]),
-                SizedBox(
-                  height: 10.h,
-                ),
-                CustomeButton(AppColor.red, "Login", onPressed() ),
-                SizedBox(
-                  height: 10.h,
-                ),
-                Row(children: [
-                  SizedBox(width: 50),
-                  Container(
-                    height: 1,
-                    width: 60,
-                    color: AppColor.deebGray,
-                  ),
-                  SizedBox(width: 10),
-                  Text(
-                    "Or Login With",
-                    style: Theme.of(context)
-                        .textTheme
-                        .bodyMedium!
-                        .copyWith(fontSize: 17.sp, color: Color(0xff969B9B)),
-                  ),
-                  SizedBox(width: 10),
-                  Container(
-                    height: 1,
-                    width: 60,
-                    color: AppColor.deebGray,
-                  )
-                ]),
-                SizedBox(
                   height: 30.h,
                 ),
-                Row(
-                  children: [
-                    SizedBox(
-                      width: 100,
-                    ),
-                    Image.asset("assets/images/facebook.png"),
-                    Image.asset("assets/images/google.png"),
-                    SizedBox(
-                      width: 10,
-                    ),
-                    Image.asset("assets/images/tweter.png"),
-                  ],
-                ),
-                SizedBox(
-                  height: 90.h,
-                ),
+                SizedBox(width: 100,),
+                Center(child: CustomeButton(AppColor.red, "Register", onPressed))
+
+
 
            ] ),
           ),
@@ -154,5 +116,21 @@ class _RegisterState extends BaseView<Register, RegisterViewModel> implements Re
     return RegisterViewModel();
   }
 
-  onPressed() {}
-}
+  void onPressed() {
+    if (key.currentState?.validate() == true) {
+      print ("hi==============================");
+      viewModel.onRegisterClicked(
+        emailcontroller.text,
+        passwordcontroller.text,
+        controller.text,
+      );
+    }
+  }
+
+
+  @override
+  goToHome() {
+   Navigator.pushReplacementNamed(context, Home.routName);
+  }
+  }
+

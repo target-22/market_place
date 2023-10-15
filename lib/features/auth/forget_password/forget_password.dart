@@ -23,7 +23,7 @@ class ForgetPassword extends StatefulWidget {
 class _ForgetPasswordState extends BaseView<ForgetPassword,ForgetPasswordViewModel> implements ForgetPasswordNavegator{
   String? hintText;
   TextEditingController emailcontroller=TextEditingController();
-  TextEditingController passwordcontroller=TextEditingController();
+
   var key = GlobalKey<FormState>();
   void initState() {
     super.initState();
@@ -80,7 +80,9 @@ class _ForgetPasswordState extends BaseView<ForgetPassword,ForgetPasswordViewMod
   }
 
 
-  onPressed() {}
+  onPressed() {
+    viewModel.sendResetCode(emailcontroller.text);
+  }
 
   @override
   goToLogIn() {

@@ -1,5 +1,7 @@
-import 'package:flutter/cupertino.dart';
+
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:market_place/core/style/app_color.dart';
 
 abstract class BaseView<T extends StatefulWidget,Vm extends BaseViewModel>extends State<T> implements BaseNavigator {
 
@@ -18,12 +20,12 @@ abstract class BaseView<T extends StatefulWidget,Vm extends BaseViewModel>extend
  }
 
  @override
- void showLoading({String message="Loading..."}) {
+ void showLoading({String message="  Loading..."}) {
    showDialog(
      context: context,
      builder: (context) => AlertDialog(
        title: Center(
-         child: Row(children: [CircularProgressIndicator(), Text(message)]),
+         child: Row(children: [CircularProgressIndicator(color: AppColor.red), Text(message)]),
        ),
      ),
    );
@@ -31,19 +33,15 @@ abstract class BaseView<T extends StatefulWidget,Vm extends BaseViewModel>extend
 
  @override
  void showMessage(String message) {
-   showDialog(
-       context: context,
-       builder: (context) => Center(
-           child: Container(
-             decoration: BoxDecoration(color:Colors.white),
-             child: Padding(
-               padding: const EdgeInsets.all(8.0),
-               child: Text(
-                 message,
-                 style: Theme.of(context).textTheme.bodyLarge,
-               ),
-             ),
-           )));
+   Fluttertoast.showToast(
+       msg: message,
+       toastLength: Toast.LENGTH_SHORT,
+       gravity: ToastGravity.CENTER,
+       timeInSecForIosWeb: 1,
+       backgroundColor: Colors.red,
+       textColor: Colors.white,
+       fontSize: 16.0
+   );
  }
 
 

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:market_place/core/models/user_model.dart';
 import 'package:market_place/features/auth/register/register_navigator.dart';
 import 'package:market_place/features/auth/register/register_view_model.dart';
 import 'package:provider/provider.dart';
@@ -10,6 +11,7 @@ import '../../../core/widgets/custom_app_bar.dart';
 import '../../../core/widgets/custom_email_form_field.dart';
 import '../../../core/widgets/custom_text_form.dart';
 import '../../../core/widgets/custome_button.dart';
+import '../../../providers/user_provider.dart';
 import '../../home/home.dart';
 
 class Register extends StatefulWidget {
@@ -67,7 +69,7 @@ class _RegisterState extends BaseView<Register, RegisterViewModel> implements Re
                 SizedBox(
                   height: 10.h,
                 ),
-                CustomTextForm(hintText: "Enter your name",controller: controller),
+                CustomTextForm(hintText: "Enter your name",controller: controller ),
                 SizedBox(
                   height: 35.h,
                 ),
@@ -120,16 +122,18 @@ class _RegisterState extends BaseView<Register, RegisterViewModel> implements Re
     if (key.currentState?.validate() == true) {
       print ("hi==============================");
       viewModel.onRegisterClicked(
-        emailcontroller.text,
-        passwordcontroller.text,
-        controller.text,
+        name: controller.text ,
+        emailAddress: emailcontroller.text ,
+        password: passwordcontroller .text
       );
     }
   }
 
 
   @override
-  goToHome() {
+  goToHome(UserModel myUser) {
+    var provider=Provider.of<UserProvider>(context,listen: false);
+    provider.myUser=myUser;
    Navigator.pushReplacementNamed(context, Home.routName);
   }
   }

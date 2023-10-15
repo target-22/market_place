@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:market_place/base.dart';
 import 'package:market_place/features/home/home_navigator.dart';
 import 'package:market_place/features/home/home_view_model.dart';
@@ -19,7 +20,9 @@ class _HomeState extends BaseView<Home,HomeViewModel>implements HomeNavigator {
   }
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Container(
+      color:Colors.blue,
+    );
   }
 
   @override

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:market_place/base.dart';
+import 'package:market_place/core/models/user_model.dart';
 import 'package:market_place/core/style/app_color.dart';
 import 'package:market_place/core/widgets/custom_app_bar.dart';
 import 'package:market_place/core/widgets/custome_button.dart';
@@ -10,6 +11,8 @@ import 'package:provider/provider.dart';
 
 import '../../../core/widgets/customPassword.dart';
 import '../../../core/widgets/custom_email_form_field.dart';
+import '../../../providers/user_provider.dart';
+import '../../home/home.dart';
 import '../forget_password/forget_password.dart';
 import '../register/register.dart';
 
@@ -181,13 +184,20 @@ class _LogINState extends BaseView<LogIN, LogInViewModel>
 
    onPressed() {
     if(key.currentState?.validate()==true) {
-     print("hello");
-      viewModel.onLogInPressed;
+     print("hello======================================");
+      viewModel.onLogInPressed( emailcontroller.text,passwordcontroller.text);
     }
   }
 
   @override
   goToForgetPasswordScreen() {
     Navigator.pushReplacementNamed(context, ForgetPassword.routName);
+  }
+
+  @override
+  goToHome(UserModel user) {
+    var provider=Provider.of<UserProvider>(context,listen: false);
+    provider.myUser=user;
+    Navigator.pushReplacementNamed(context, Home.routName);
   }
 }

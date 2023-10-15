@@ -1,20 +1,15 @@
-class UserModel{
-  static String userCollectionName="User";
+class UserModel {
+  static const String userCollectionName = "User";
   String id;
-  String name;
   String email;
-  UserModel({required this.id, required this.name, required this.email});
+  String name;
 
+  UserModel({required this.id, required this.email, required this.name});
 
-  UserModel.fromJson(Map<String,dynamic>Json):
-        this(id:Json["id"] ,name:Json["name"] ,email:Json["email"] );
+  UserModel.fromJson(Map<String, dynamic> Json)
+      : this(id: Json["id"], email: Json["email"], name: Json["name"]);
 
-  Map<String,dynamic>toJson(){
-    return{
-      "id" : id ,
-      "name" : name,
-      " email" : email
-    };
+  Map<String, dynamic> toJson() {
+    return {"id": id, "email": email, "name": name};
   }
-
 }

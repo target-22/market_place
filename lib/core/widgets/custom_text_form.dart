@@ -2,14 +2,20 @@ import 'package:flutter/material.dart';
 import 'package:market_place/core/style/text_style.dart';
 
 class CustomTextForm extends StatelessWidget {
-   CustomTextForm( {this.controller,this.hintText,});
+   CustomTextForm( {this.controller,this.hintText});
   TextEditingController? controller;
    String? hintText;
+
   // String labal;
   @override
   Widget build(BuildContext context) {
     return TextFormField(
       controller: controller,
+      validator: (value) {
+        if(value==null){
+          return "Please enter your name";
+        }
+      },
       decoration: InputDecoration(hintText: hintText,
           hintStyle: AppTexts.roboto18 ,
           //label: Text(labal,style: AppTexts.roboto23,),
